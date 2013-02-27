@@ -199,6 +199,7 @@ test("concat() a varying number of buffers", function (t) {
     t.end();
 });
 
+
 test("buffer from buffer", function (t) {
     t.plan(1);
     var b1 = new buffer.Buffer('asdf');
@@ -206,3 +207,14 @@ test("buffer from buffer", function (t) {
     t.equal(b1.toString('hex'), b2.toString('hex'));
     t.end();
 });
+
+test("fill", function(t) {
+    t.plan(1);
+    var b1 = new Buffer(10);
+    var b2 = new buffer.Buffer(10);
+    b1.fill(2);
+    b2.fill(2);
+    t.equal(b1.toString('hex'), b2.toString('hex'));
+    t.end();
+})
+
