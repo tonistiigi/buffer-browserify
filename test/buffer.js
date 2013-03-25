@@ -223,3 +223,11 @@ test("fill", function(t) {
     t.equal(b.toString('hex'), '02020202020202020202');
     t.end();
 });
+
+test("simple slice", function(t) {
+  t.plan(1);
+  var b = new B('asdf');
+  var slice = b.slice(0, 3);
+  t.equal(slice.toString(), 'asd');
+  t.end();
+});
