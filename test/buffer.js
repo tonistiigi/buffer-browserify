@@ -231,3 +231,14 @@ test("simple slice", function(t) {
   t.equal(slice.toString(), 'asd');
   t.end();
 });
+
+test("slice references same memory", function(t) {
+  t.plan(2);
+  var b = new B([1, 2, 3]);
+  var slice = b.slice(1);
+  b.writeUInt8(4, 1);
+  t.equal(4, slice.readUInt8(0));
+  slice.writeUInt8(5, 1);
+  t.equal(5, b.readUInt8(2));
+  t.end();
+});
